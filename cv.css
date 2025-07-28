@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #000;
+  color: #0ff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 2rem;
+  background-image: radial-gradient(#0ff2, #000);
+}
+
+.holo-container {
+  width: 90%;
+  max-width: 800px;
+  border: 2px solid #0ff;
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(0, 255, 255, 0.05);
+  box-shadow: 0 0 30px #0ff5, inset 0 0 10px #0ff3;
+  animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+  from { box-shadow: 0 0 20px #0ff5, inset 0 0 5px #0ff2; }
+  to { box-shadow: 0 0 40px #0ff8, inset 0 0 15px #0ff3; }
+}
+
+.holo-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+/* 🌟 Hologram glow ring around avatar */
+.avatar {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #0ff;
+  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff5, 0 0 60px #0ff3;
+  animation: avatarPulse 2.5s infinite alternate;
+}
+
+/* Animated glowing ring */
+.avatar::after {
+  content: "";
+  position: absolute;
+  top: -10px; left: -10px;
+  width: 170px; height: 170px;
+  border-radius: 50%;
+  border: 2px dashed #0ff8;
+  animation: rotateRing 8s linear infinite;
+  box-shadow: 0 0 15px #0ff6;
+}
+
+@keyframes avatarPulse {
+  0% { box-shadow: 0 0 15px #0ff, 0 0 30px #0ff4; }
+  100% { box-shadow: 0 0 25px #0ff, 0 0 50px #0ff6; }
+}
+
+@keyframes rotateRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 💫 Animated glow for name */
+.glow-text {
+  font-size: 2.5rem;
+  margin-top: 1rem;
+  text-shadow: 0 0 15px #0ff, 0 0 30px #0ff, 0 0 45px #0ff7;
+  animation: nameFlicker 2s infinite alternate;
+}
+
+@keyframes nameFlicker {
+  0% { opacity: 0.9; text-shadow: 0 0 10px #0ff, 0 0 20px #0ff5; }
+  50% { opacity: 1; text-shadow: 0 0 20px #0ff, 0 0 40px #0ff7; }
+  100% { opacity: 0.85; text-shadow: 0 0 15px #0ff, 0 0 30px #0ff4; }
+}
+
+/* ✨ Subtext with subtle flicker */
+.glow-sub {
+  font-size: 1.2rem;
+  color: #7ff;
+  margin-top: 0.5rem;
+  text-shadow: 0 0 8px #0ff6, 0 0 15px #0ff3;
+  animation: subFlicker 3s infinite alternate;
+}
+
+@keyframes subFlicker {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; text-shadow: 0 0 15px #0ff8; }
+  100% { opacity: 0.7; }
+}
+
+
+/* 🔥 Floating Panels Animation */
+.holo-section {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  border: 1px dashed #0ff8;
+  border-radius: 10px;
+  background: rgba(0, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: floaty 5s ease-in-out infinite alternate;
+}
+
+@keyframes floaty {
+  from { transform: translateY(0); }
+  to { transform: translateY(-8px); }
+}
+
+.holo-section:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px #0ff8, inset 0 0 10px #0ff5;
+  background: rgba(0, 255, 255, 0.1);
+  border-color: #0ff;
+}
+
+.project-card {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  border-left: 3px solid #0ff;
+  background: rgba(0,255,255,0.08);
+  border-radius: 6px;
+  text-shadow: 0 0 5px #0ff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 0 15px #0ff8, inset 0 0 8px #0ff3;
+  background: rgba(0,255,255,0.15);
+}
+
+/* ✨ Glitch Effect on Section Titles */
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #0ff;
+  text-shadow: 0 0 5px #0ff;
+  transition: all 0.3s;
+}
+
+.section-title:hover {
+  animation: glitch 0.4s infinite;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 2px 0 #f0f, -2px 0 #0ff; }
+  25% { text-shadow: -2px -2px #0ff, 2px 2px #f0f; }
+  50% { text-shadow: 2px -2px #f0f, -2px 2px #0ff; }
+  75% { text-shadow: -2px 2px #0ff, 2px -2px #f0f; }
+  100% { text-shadow: 2px 0 #f0f, -2px 0 #0ff; }
+}
+
+.holo-list li {
+  margin: 0.5rem 0;
+  color: #aff;
+  text-shadow: 0 0 5px #0ff;
+}
+
+.mail {
+    color: yellow;
+}
+
