@@ -15,43 +15,92 @@
       </div>
       <h1 class="glow-text">Nikhil Tiwari</h1>
       <p class="glow-sub">Web Developer | App Developer | AI Enthusiast</p>
+      <blockquote class="ai-quote">“Nikhil is a creative tech innovator who bridges AI and development.”</blockquote>
     </header>
+    
+    <!-- Skills Section -->
+    <section class="skills">
+      <h2 class="section-title">👨‍💻 Skills</h2>
+      <div class="skill">
+        <p>HTML/CSS</p>
+        <div class="progress-bar"><span style="width: 90%"></span></div>
+      </div>
+      <div class="skill">
+        <p>JavaScript</p>
+        <div class="progress-bar"><span style="width: 85%"></span></div>
+      </div>
+      <div class="skill">
+        <p>Python</p>
+        <div class="progress-bar"><span style="width: 80%"></span></div>
+      </div>
+    </section>
 
+    <!-- Radial Skills -->
+    <section class="radial-skills">
+      <div class="circle" data-percent="75">
+        <svg>
+          <circle cx="50" cy="50" r="36"></circle>
+          <circle cx="50" cy="50" r="36"></circle>
+        </svg>
+        <span>AI/ML</span>
+      </div>
+
+      <div class="circle" data-percent="70">
+        <svg>
+          <circle cx="50" cy="50" r="36"></circle>
+          <circle cx="50" cy="50" r="36"></circle>
+        </svg>
+        <span>Node.js</span>
+      </div>
+
+      <div class="circle" data-percent="60">
+        <svg>
+          <circle cx="50" cy="50" r="36"></circle>
+          <circle cx="50" cy="50" r="36"></circle>
+        </svg>
+        <span>React</span>
+      </div>
+      
+      <div class="circle" data-percent="40">
+        <svg>
+          <circle cx="50" cy="50" r="36"></circle>
+          <circle cx="50" cy="50" r="36"></circle>
+        </svg>
+        <span>Database</span>
+      </div>
+    </section>
+
+    <!-- Extra Skills Section -->
     <section class="holo-section">
       <h2 class="section-title">👨‍💻 Skills</h2>
       <ul class="holo-list">
-        <li> HTML, CSS, JavaScript</li>
-        <li> Python, C, C++</li>
-        <li> React, Node.js</li>
-        <li> AI & Machine Learning</li>
         <li>Database: MySQL, Firebase</li>
         <li>Git, GitHub, VS Code</li>
       </ul>
     </section>
 
+    <!-- Projects Section -->
     <section class="holo-section">
       <h2 class="section-title">📂 Projects</h2>
       <div class="project-card">
         <h3>Healfusion – AI Medical Assistant</h3>
-        <p>A full-stack AI-powered web app that detects symptoms, provides medical suggestions (home & medicinal), and allows voice-based multilingual interaction. Built with Python, JavaScript, and Firebase.
-        </p>
+        <p>A full-stack AI-powered web app that detects symptoms, provides medical suggestions (home & medicinal), and allows voice-based multilingual interaction. Built with Python, JavaScript, and Firebase.</p>
       </div>
       <div class="project-card">
         <h3>Portfolio Website</h3>
         <p>A responsive and accessible portfolio website showcasing my projects, experience, and skills. Designed with HTML5, CSS3, and JS.</p>
       </div>
       <div class="project-card">
-        <h3>WearYorDesign</h3>
-        <p><strong>WearYourDesign</strong> is an innovative web platform where users can create, visualize, and order custom apparel.
-            It features an interactive design tool, 3D previews, and a backend system for handling orders and user profiles.</p>
+        <h3>WearYourDesign</h3>
+        <p><strong>WearYourDesign</strong> is an innovative web platform where users can create, visualize, and order custom apparel with 3D previews and backend order handling.</p>
       </div>
       <div class="project-card">
         <h3>Project-4</h3>
         <p>Responsive personal portfolio showcasing skills and projects.</p>
       </div>
-      
     </section>
 
+    <!-- Contact Section -->
     <section class="holo-section">
       <h2 class="section-title">📞 Contact</h2>
       <p>Email: <a href="mailto:nikhil.25011038g@gmail.com" class="mail">nikhil.25011038g@gmail.com</a></p>
@@ -59,5 +108,20 @@
     </section>
   </div>
 
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const circles = document.querySelectorAll(".circle");
+    circles.forEach(circle => {
+      const percent = circle.getAttribute("data-percent");
+      const stroke = circle.querySelector("svg circle:last-child");
+      const offset = 226 - (226 * percent) / 100;
+      setTimeout(() => {
+        stroke.style.strokeDashoffset = offset;
+      }, 500);
+    });
+  });
+  </script>
+
 </body>
 </html>
+
