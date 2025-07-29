@@ -112,6 +112,45 @@ body {
   margin-top: 0.5rem;
   text-align: center;
 }
+/*sidebar css*/
+/* Sidebar Styles */
+.side_nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 180px;
+  background: rgba(25, 25, 25, 0.9);
+  padding-top: 100px; /* Leave space for avatar/header */
+  z-index: 10;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  color: #00fff7;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 10px 0;
+  transition: all 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+  border-left: 4px solid #00fff7;
+}
+
 
 /* Linear Skills */
 .skills {
