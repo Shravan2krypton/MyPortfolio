@@ -6,9 +6,7 @@
   <img src="https://readme-typing-svg.herokuapp.com?color=FF0000&size=30&center=true&vCenter=true&width=900&lines=Booting+NIKHIL+OS...;Injecting+Cyber+Interface...;Loading+Red+Protocol...;System+Status:+ONLINE" />
 </p>
 
----
 
-# ☠ NIKHIL OS  
 ### `Cyberpunk Portfolio Interface`
 
 ```
