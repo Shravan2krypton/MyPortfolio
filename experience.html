@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience | Nikhil OS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Orbitron',sans-serif;
+  background:black;
+  color:#00ffcc;
+  overflow-x:hidden;
+}
+
+/* Matrix */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+/* Navbar */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 8%;
+  border-bottom:1px solid #00ffcc;
+}
+
+.navbar a{
+  color:#00ffcc;
+  text-decoration:none;
+  margin-left:20px;
+}
+
+.navbar a:hover{
+  text-shadow:0 0 10px #00ffcc;
+}
+
+/* Section */
+.section{
+  padding:80px 10%;
+}
+
+.section h1{
+  text-align:center;
+  margin-bottom:50px;
+  text-shadow:0 0 20px #00ffcc;
+}
+
+/* Experience Cards */
+.exp-container{
+  display:grid;
+  gap:30px;
+}
+
+.exp-card{
+  padding:30px;
+  background:rgba(0,255,204,0.05);
+  border-left:4px solid #00ffcc;
+  backdrop-filter:blur(10px);
+  border-radius:20px 60px 20px 60px;
+  box-shadow:0 0 25px rgba(0,255,204,0.2);
+  transition:.3s;
+}
+
+.exp-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 40px rgba(0,255,204,0.5);
+}
+
+.exp-card h3{
+  margin-bottom:10px;
+}
+
+/* Add Form */
+.add-form{
+  margin-top:60px;
+  padding:30px;
+  border:1px solid #00ffcc;
+  border-radius:20px;
+}
+
+.add-form input,
+.add-form textarea{
+  width:100%;
+  margin-bottom:15px;
+  padding:10px;
+  background:transparent;
+  border:none;
+  border-bottom:1px solid #00ffcc;
+  color:#00ffcc;
+  font-family:'Orbitron';
+  outline:none;
+}
+
+.add-form button{
+  padding:10px 20px;
+  background:transparent;
+  border:1px solid #00ffcc;
+  color:#00ffcc;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.add-form button:hover{
+  background:#00ffcc;
+  color:black;
+  box-shadow:0 0 15px #00ffcc;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  border-top:1px solid #00ffcc;
+  margin-top:40px;
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<nav class="navbar">
+  <h2>Nikhil OS</h2>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="section">
+  <h1>💼 Experience Module</h1>
+
+  <div class="exp-container" id="experience-list"></div>
+
+  <div class="add-form">
+    <h3>Add New Experience</h3>
+    <input type="text" id="role" placeholder="Role / Position" required>
+    <input type="text" id="company" placeholder="Company Name" required>
+    <textarea id="description" placeholder="Describe your work..." required></textarea>
+    <button onclick="addExperience()">Save Experience</button>
+  </div>
+</section>
+
+<footer>
+  Experience Database Active | © 2026 Nikhil Tiwari
+</footer>
+
+<script>
+
+/* ============================= */
+/* EXPERIENCE STORAGE SYSTEM */
+/* ============================= */
+
+const defaultExperiences = [
+  {
+    role: "AI Developer Intern",
+    company: "FutureTech Labs",
+    description: "Built ML models and automated intelligent systems."
+  },
+  {
+    role: "Cybersecurity Analyst",
+    company: "SecureNet Systems",
+    description: "Performed vulnerability assessments and penetration testing."
+  }
+];
+
+if(!localStorage.getItem("experiences")){
+  localStorage.setItem("experiences", JSON.stringify(defaultExperiences));
+}
+
+function loadExperiences(){
+  const list = document.getElementById("experience-list");
+  list.innerHTML = "";
+
+  const experiences = JSON.parse(localStorage.getItem("experiences"));
+
+  experiences.forEach(exp => {
+    const div = document.createElement("div");
+    div.className = "exp-card";
+    div.innerHTML = `
+      <h3>${exp.role}</h3>
+      <p><strong>${exp.company}</strong></p>
+      <p>${exp.description}</p>
+    `;
+    list.appendChild(div);
+  });
+}
+
+function addExperience(){
+  const role = document.getElementById("role").value;
+  const company = document.getElementById("company").value;
+  const description = document.getElementById("description").value;
+
+  if(role && company && description){
+    const experiences = JSON.parse(localStorage.getItem("experiences"));
+    experiences.push({role, company, description});
+    localStorage.setItem("experiences", JSON.stringify(experiences));
+
+    document.getElementById("role").value = "";
+    document.getElementById("company").value = "";
+    document.getElementById("description").value = "";
+
+    loadExperiences();
+  }
+}
+
+loadExperiences();
+
+/* ============================= */
+/* MATRIX RAIN */
+/* ============================= */
+
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "01010101NIKHILOSSECUREAIHACKSYSTEM";
+const fontSize = 16;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = [];
+
+for(let x = 0; x < columns; x++){
+  drops[x] = Math.random() * canvas.height;
+}
+
+function drawMatrix(){
+  ctx.fillStyle = "rgba(0,0,0,0.08)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  ctx.fillStyle="#ff0033";
+  ctx.font=fontSize+"px Orbitron";
+  ctx.shadowColor="#ff0033";
+  ctx.shadowBlur=12;
+
+  for(let i=0;i<drops.length;i++){
+    const text=letters.charAt(Math.floor(Math.random()*letters.length));
+    ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+    if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+      drops[i]=0;
+    }
+    drops[i]++;
+  }
+  ctx.shadowBlur=0;
+}
+
+setInterval(drawMatrix,33);
+
+window.addEventListener("resize",()=>{
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+});
+</script>
+
+</body>
+</html>

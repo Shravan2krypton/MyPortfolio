@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Achievements | Nikhil Tiwari</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:#0b0b0b;
+    color:white;
+}
+
+/* Header */
+.header{
+    text-align:center;
+    padding:60px 20px 40px;
+}
+
+.header h1{
+    font-size:40px;
+    color:#ff2a2a;
+    text-shadow:0 0 15px red;
+    letter-spacing:2px;
+}
+
+/* Grid */
+.achievements{
+    padding:40px 8%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+/* Card */
+.card{
+    background:rgba(255,0,0,0.05);
+    border:1px solid rgba(255,0,0,0.3);
+    padding:30px;
+    border-radius:15px;
+    transition:0.4s ease;
+    backdrop-filter:blur(8px);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px rgba(255,0,0,0.6);
+    border-color:red;
+}
+
+.card h3{
+    color:#ff4d4d;
+    margin-bottom:10px;
+}
+
+.card h4{
+    margin-bottom:10px;
+    color:#aaa;
+    font-weight:normal;
+}
+
+.card p{
+    font-size:14px;
+    line-height:1.6;
+    color:#ccc;
+    margin-bottom:15px;
+}
+
+/* Button */
+.btn{
+    display:inline-block;
+    padding:10px 18px;
+    background:red;
+    color:white;
+    text-decoration:none;
+    border-radius:6px;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#ff2a2a;
+    box-shadow:0 0 10px red;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:#777;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>🏆 My Achievements</h1>
+</div>
+
+<div class="achievements">
+
+    <!-- Python Programming -->
+    <div class="card">
+        <h3>Programming in Python</h3>
+        <h4>SWAYAM Online Course | 84%</h4>
+        <p>Successfully completed 4-credit Python Programming course with consolidated score of 84% (May 2025).</p>
+        <a class="btn" href="https://drive.google.com/file/d/1S4K4ZhYkQ_Q1DNOMyv-zVTzkE8klqUXx/view?usp=drive_link" target="_blank">
+            View Certificate
+        </a>
+    </div>
+
+    <!-- Ethical Hacking -->
+    <div class="card">
+        <h3>Ethical Hacking</h3>
+        <h4>NPTEL Certification | 55%</h4>
+        <p>Completed 12-week Ethical Hacking course covering penetration testing, vulnerabilities and cybersecurity concepts.</p>
+        <a class="btn" href="https://drive.google.com/file/d/1XzDmSka4f_CozLmWesvYqobE4aeVLx_o/view?usp=drive_link" target="_blank">
+            View Certificate
+        </a>
+    </div>
+
+    <!-- IBM Datathon -->
+    <div class="card">
+        <h3>IBM Z Datathon 2025</h3>
+        <h4>Global Datathon Participation</h4>
+        <p>Successfully participated in IBM Z Datathon 2025, contributing to real-world data problem solving and innovation challenges.</p>
+        <a class="btn" href="https://drive.google.com/file/d/1YI2ieh0rycECJ4agou9wElwV8frsZHJR/view?usp=drive_link" target="_blank">
+            View Certificate
+        </a>
+    </div>
+
+    <!-- Syntexchub Internship -->
+    <div class="card">
+        <h3>Cybersecurity Internship Offer</h3>
+        <h4>Syntexchub | Remote Internship</h4>
+        <p>Selected for Virtual Internship Program in Cybersecurity at SYNTEXCHUB with hands-on industry exposure.</p>
+        <a class="btn" href="https://drive.google.com/file/d/1Cz1ykFlhi9NETr2mk6XAHx1_36tYTwCO/view?usp=drive_link" target="_blank">
+            View Offer Letter
+        </a>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Nikhil Tiwari | Cybersecurity & AI Enthusiast
+</footer>
+
+</body>
+</html>

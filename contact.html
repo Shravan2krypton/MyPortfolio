@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Nikhil OS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Orbitron',sans-serif;
+  background:black;
+  color:#00ffcc;
+  overflow-x:hidden;
+}
+
+/* ===== Matrix Canvas ===== */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+/* ===== Navbar ===== */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 8%;
+  border-bottom:1px solid #00ffcc;
+}
+
+.navbar a{
+  color:#00ffcc;
+  text-decoration:none;
+  margin-left:20px;
+  transition:.3s;
+}
+
+.navbar a:hover{
+  text-shadow:0 0 10px #00ffcc;
+}
+
+/* ===== Contact Section ===== */
+.contact-section{
+  min-height:85vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:60px 10%;
+}
+
+/* ===== Cyber Glass Form ===== */
+.contact-form{
+  width:100%;
+  max-width:600px;
+  padding:50px;
+  background:rgba(0,255,204,0.05);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(0,255,204,0.4);
+  border-radius:30px 80px 30px 80px;
+  position:relative;
+  box-shadow:0 0 40px rgba(0,255,204,0.2);
+  animation:pulse 4s infinite alternate;
+}
+
+/* Soft pulse glow */
+@keyframes pulse{
+  from{box-shadow:0 0 20px rgba(0,255,204,0.2)}
+  to{box-shadow:0 0 50px rgba(0,255,204,0.5)}
+}
+
+.contact-form h2{
+  text-align:center;
+  margin-bottom:30px;
+  text-shadow:0 0 15px #00ffcc;
+  position:relative;
+}
+
+/* Holographic underline */
+.contact-form h2::after{
+  content:"";
+  display:block;
+  height:2px;
+  width:60%;
+  margin:10px auto 0;
+  background:linear-gradient(to right,transparent,#00ffcc,transparent);
+}
+
+/* Inputs */
+.input-group{
+  margin-bottom:25px;
+}
+
+.input-group input,
+.input-group textarea{
+  width:100%;
+  padding:15px;
+  background:transparent;
+  border:none;
+  border-bottom:1px solid #00ffcc;
+  color:#00ffcc;
+  font-family:'Orbitron',sans-serif;
+  outline:none;
+  transition:.3s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+  border-bottom:1px solid #ff0033;
+  box-shadow:0 10px 20px -10px #ff0033;
+}
+
+/* Button */
+button{
+  width:100%;
+  padding:15px;
+  background:transparent;
+  border:1px solid #00ffcc;
+  color:#00ffcc;
+  font-family:'Orbitron',sans-serif;
+  cursor:pointer;
+  transition:.4s;
+  letter-spacing:2px;
+}
+
+button:hover{
+  background:#00ffcc;
+  color:black;
+  box-shadow:0 0 20px #00ffcc;
+}
+
+/* Status Text */
+#status{
+  margin-top:15px;
+  text-align:center;
+  font-size:14px;
+  min-height:20px;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:30px;
+  border-top:1px solid #00ffcc;
+  margin-top:40px;
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<nav class="navbar">
+  <h2>Nikhil OS</h2>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+  </div>
+</nav>
+
+<section class="contact-section">
+
+  <div class="contact-form">
+    <h2>📡 Secure Transmission Channel</h2>
+
+    <form id="contact-form">
+      <div class="input-group">
+        <input type="text" name="user_name" placeholder="Enter Your Name" required>
+      </div>
+
+      <div class="input-group">
+        <input type="email" name="user_email" placeholder="Enter Your Email" required>
+      </div>
+
+      <div class="input-group">
+        <textarea name="message" rows="4" placeholder="Your Encrypted Message..." required></textarea>
+      </div>
+
+      <button type="submit">INITIATE CONNECTION</button>
+      <div id="status"></div>
+    </form>
+  </div>
+
+</section>
+
+<footer>
+  Secure Line Active | © 2026 Nikhil Tiwari
+</footer>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("kPtESDWMoCivZQ5DX");
+})();
+
+document.getElementById("contact-form").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const status = document.getElementById("status");
+  status.innerHTML = "Transmitting...";
+
+  emailjs.sendForm(
+    "service_zi6c4tn",
+    "template_lws5hwr",
+    this
+  ).then(function(){
+      status.innerHTML = "✅ Transmission Successful!";
+      document.getElementById("contact-form").reset();
+  }, function(error){
+      status.innerHTML = "❌ Transmission Failed";
+      console.log(error);
+  });
+});
+
+/* ============================= */
+/* RED MATRIX DIGITAL RAIN */
+/* ============================= */
+
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "01010101NIKHILOSSECUREAIHACKSYSTEM";
+const fontSize = 16;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = [];
+
+for(let x = 0; x < columns; x++){
+  drops[x] = Math.random() * canvas.height;
+}
+
+function drawMatrix(){
+  ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#ff0033";
+  ctx.font = fontSize + "px Orbitron";
+  ctx.shadowColor = "#ff0033";
+  ctx.shadowBlur = 12;
+
+  for(let i = 0; i < drops.length; i++){
+    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
+    }
+
+    drops[i]++;
+  }
+
+  ctx.shadowBlur = 0;
+}
+
+setInterval(drawMatrix, 33);
+
+window.addEventListener("resize", ()=>{
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+
+</body>
+</html>

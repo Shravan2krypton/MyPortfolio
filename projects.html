@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | Nikhil OS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Orbitron',sans-serif;
+  background:black;
+  color:#00ffcc;
+  overflow-x:hidden;
+}
+
+/* ===== Background Canvas ===== */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+/* ===== Navbar ===== */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  padding:20px 8%;
+  border-bottom:1px solid #00ffcc;
+}
+
+.navbar a{
+  color:#00ffcc;
+  text-decoration:none;
+  margin-left:20px;
+  transition:.3s;
+}
+
+.navbar a:hover{
+  text-shadow:0 0 10px #00ffcc;
+}
+
+/* ===== Section ===== */
+.section{
+  padding:100px 10%;
+  min-height:100vh;
+}
+
+.section h1{
+  font-size:2.5rem;
+  text-shadow:0 0 20px #00ffcc;
+  margin-bottom:60px;
+  text-align:center;
+}
+
+/* ===== Project Grid ===== */
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+
+.card{
+  padding:30px;
+  border:1px solid #00ffcc;
+  border-radius:15px;
+  background:rgba(0,255,204,0.05);
+  transition:.4s;
+  position:relative;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 30px #00ffcc;
+}
+
+.card h3{
+  margin-bottom:15px;
+}
+
+.card p{
+  font-size:0.95rem;
+  margin-bottom:20px;
+  line-height:1.5;
+}
+
+.tech-stack{
+  font-size:0.8rem;
+  opacity:0.8;
+  margin-bottom:15px;
+}
+
+.card a{
+  text-decoration:none;
+  color:#00ffcc;
+  border:1px solid #00ffcc;
+  padding:8px 15px;
+  border-radius:8px;
+  transition:.3s;
+  display:inline-block;
+}
+
+.card a:hover{
+  background:#00ffcc;
+  color:black;
+}
+
+/* ===== Footer ===== */
+footer{
+  text-align:center;
+  padding:30px;
+  border-top:1px solid #00ffcc;
+  margin-top:60px;
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<nav class="navbar">
+  <h2>Nikhil OS</h2>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="education.html">Education</a>
+    <a href="experience.html">Experience</a>
+    <a href="achievements.html">Achievements</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="section">
+  <h1>🧪 Projects Lab</h1>
+
+  <div class="project-grid">
+
+    <div class="card">
+      <h3>🩺 HealFusion – AI Medical Assistant</h3>
+      <p>Full-stack AI-powered healthcare platform integrating symptom analysis, disease prediction, treatment guidance, multilingual voice interaction, and secure doctor consultation management.</p>
+      <div class="tech-stack">
+        Tech: React 18, Vite, Node.js, Express, MongoDB, JWT, bcrypt, Web Speech API
+      </div>
+      <a href="https://github.com/Shravan2krypton/Heal-Fusion.git" target="_blank">
+        View Repository →
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>💪 FitZone – Fitness Exercise Web App</h3>
+      <p>Interactive muscle-specific workout platform featuring exercise visuals, progress tracking calendar, responsive UI, and structured fitness guidance for beginners.</p>
+      <div class="tech-stack">
+        Tech: HTML, CSS, JavaScript
+      </div>
+      <a href="https://github.com/Shravan2krypton/Fitness-Club.git" target="_blank">
+        View Repository →
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>💖 Ask Her Out – Valentine Special Web App</h3>
+      <p>Animated romantic web experience with interactive gift reveal, playful dialogues, runaway button logic, background music, dreamy visuals, and fully responsive design.</p>
+      <div class="tech-stack">
+        Tech: HTML, CSS, JavaScript
+      </div>
+      <a href="https://github.com/Shravan2krypton/V-Confession.git" target="_blank">
+        View Repository →
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>📚 Student Notes Portal</h3>
+      <p>Full-stack academic resource platform providing department-based notes, PYQs, admin panel, feedback system, and database-driven content management.</p>
+      <div class="tech-stack">
+        Tech: Next.js 14, Neon PostgreSQL, Drizzle ORM, Tailwind CSS, Vercel
+      </div>
+      <a href="https://github.com/Shravan2krypton/Student-Notes-Portal.git" target="_blank">
+        View Repository →
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>🎨 WearYourDesign – Custom Fashion E-Commerce</h3>
+      <p>Feature-rich fashion e-commerce platform enabling users to shop, customize products, upload designs, manage carts, and complete secure payments in a responsive environment.</p>
+      <div class="tech-stack">
+        Tech: HTML, CSS, JavaScript, Node.js, Express, MongoDB
+      </div>
+      <a href="https://github.com/Shravan2krypton/WearYourDesign.git" target="_blank">
+        View Repository →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  System Status: Secure | © 2026 Nikhil Tiwari
+</footer>
+
+<script>
+
+/* ============================= */
+/* RED MATRIX DIGITAL RAIN */
+/* ============================= */
+
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "01010101NIKHILOSSECUREAIHACKSYSTEM";
+const fontSize = 16;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = [];
+
+for(let x = 0; x < columns; x++){
+  drops[x] = Math.random() * canvas.height;
+}
+
+function drawMatrix(){
+  ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#ff0033";
+  ctx.shadowColor = "#ff0033";
+  ctx.shadowBlur = 12;
+  ctx.font = fontSize + "px Orbitron";
+
+  for(let i = 0; i < drops.length; i++){
+    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
+    }
+
+    drops[i]++;
+  }
+
+  ctx.shadowBlur = 0;
+}
+
+setInterval(drawMatrix, 33);
+
+window.addEventListener("resize", ()=>{
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+</script>
+
+</body>
+</html>

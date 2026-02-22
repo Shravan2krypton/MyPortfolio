@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Personal | Nikhil OS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Courier New',monospace;
+}
+
+body{
+  background:black;
+  color:#00ff88;
+  overflow:hidden;
+}
+
+/* ===== MATRIX CANVAS ===== */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-2;
+}
+
+/* ===== NAVBAR ===== */
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,0.7);
+  border-bottom:1px solid #00ff88;
+  backdrop-filter:blur(6px);
+  z-index:1000;
+}
+
+nav h2{
+  letter-spacing:2px;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:25px;
+}
+
+nav a{
+  text-decoration:none;
+  color:#00ff88;
+  transition:0.3s;
+}
+
+nav a:hover{
+  text-shadow:0 0 15px #00ff88;
+  color:white;
+}
+
+/* ===== MAIN SECTION ===== */
+.container{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:80px;
+  flex-wrap:wrap;
+  padding:120px 10%;
+  animation:fadeUp 1.5s ease;
+}
+
+/* ===== HOLOGRAM PROFILE IMAGE ===== */
+.profile-wrapper{
+  position:relative;
+  width:280px;
+  height:280px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  animation:float 5s ease-in-out infinite;
+}
+
+.profile-wrapper img{
+  width:240px;
+  height:240px;
+  object-fit:cover;
+  border-radius:50%;
+  z-index:2;
+  box-shadow:0 0 25px #00ff88;
+  transition:0.4s;
+}
+
+.profile-wrapper img:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 50px #00ff88;
+}
+
+/* Rotating Neon Ring */
+.holo-ring{
+  position:absolute;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  border:3px solid transparent;
+  border-top:3px solid #00ff88;
+  border-bottom:3px solid red;
+  animation:rotateRing 6s linear infinite;
+  box-shadow:0 0 30px #00ff88;
+}
+
+/* ===== CURVED GLASS PANEL ===== */
+.details{
+  max-width:520px;
+  padding:50px;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
+  border:1px solid #00ff88;
+  border-radius:60px 20px 60px 20px;
+  box-shadow:0 0 40px #00ff88;
+  transition:0.5s;
+}
+
+.details:hover{
+  box-shadow:0 0 70px #00ff88;
+}
+
+.details h1{
+  margin-bottom:25px;
+  font-size:32px;
+  text-shadow:0 0 20px #00ff88;
+}
+
+.details p{
+  margin-bottom:14px;
+  font-size:17px;
+}
+
+/* ===== SOCIAL LINKS ===== */
+.social{
+  margin-top:25px;
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.social a{
+  padding:12px 18px;
+  border-radius:40px;
+  border:1px solid #00ff88;
+  text-decoration:none;
+  color:#00ff88;
+  transition:0.3s;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.social a:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 25px #00ff88;
+}
+
+.linkedin:hover{
+  background:#0077b5;
+  border-color:#0077b5;
+  color:white;
+}
+
+.github:hover{
+  background:#222;
+  border-color:#222;
+  color:white;
+}
+
+.instagram:hover{
+  background:linear-gradient(45deg,#f09433,#dc2743,#bc1888);
+  border-color:#dc2743;
+  color:white;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes rotateRing{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-12px);}
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<nav>
+  <h2>NIKHIL OS</h2>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="education.html">Education</a></li>
+    <li><a href="project.html">Projects</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <!-- HOLOGRAM IMAGE -->
+  <div class="profile-wrapper">
+    <div class="holo-ring"></div>
+    <img src="ceo.jpg" alt="Nikhil Tiwari">
+  </div>
+
+  <!-- DETAILS PANEL -->
+  <div class="details">
+    <h1>Personal Identity</h1>
+    <p><strong>Name:</strong> Nikhil Tiwari</p>
+    <p><strong>DOB:</strong> 24 October 2006</p>
+    <p><strong>Location:</strong> Vadodara, Gujarat</p>
+    <p><strong>Email:</strong> nikhil.25011038g@gmail.com</p>
+    <p><strong>Languages:</strong> English, Hindi, Gujarati</p>
+
+    <div class="social">
+      <a href="https://www.linkedin.com/in/nikhil-tiwari-3a454133a/" target="_blank" class="linkedin">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+
+      <a href="https://github.com/Shravan2krypton" target="_blank" class="github">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+
+      <a href="https://www.instagram.com/ult1mate.void/" target="_blank" class="instagram">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ===== DIGITAL MATRIX RAIN ===== */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "01NIKHILOS";
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const drops = [];
+
+for(let i = 0; i < columns; i++){
+  drops[i] = 1;
+}
+
+function draw(){
+  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  ctx.fillStyle = "red";
+  ctx.font = fontSize + "px monospace";
+
+  for(let i = 0; i < drops.length; i++){
+    const text = letters.charAt(Math.floor(Math.random()*letters.length));
+    ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+    if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+}
+
+setInterval(draw,33);
+
+window.addEventListener("resize",()=>{
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+
+</body>
+</html>

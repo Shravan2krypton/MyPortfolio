@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikhil OS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Orbitron',sans-serif;
+  background:black;
+  color:#00ffcc;
+  overflow-x:hidden;
+}
+
+/* ===== Hacker Image ===== */
+.hero-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 2px solid #00ffcc;
+  box-shadow: 0 0 20px #00ffcc;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== Background ===== */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+/* ===== Terminal ===== */
+#terminal{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  font-size:18px;
+}
+
+/* ===== Main Content ===== */
+#main{
+  display:none;
+  padding-top:60px;
+  transition: margin-left 0.3s;
+}
+
+/* ===== Navbar ===== */
+.navbar{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:15px 0;
+  background:black;
+  border-bottom:1px solid #00ffcc;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+}
+
+/* Hamburger */
+.menu-btn{
+  position:absolute;
+  left:20px;
+  font-size:24px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.menu-btn:hover{
+  text-shadow:0 0 10px #00ffcc;
+}
+
+/* ===== Sidebar ===== */
+.sidebar{
+  position: fixed;
+  top:60px;
+  left:-220px;
+  width:220px;
+  height:100%;
+  background:rgba(0,0,0,0.95);
+  border-right:1px solid #00ffcc;
+  display:flex;
+  flex-direction:column;
+  padding-top:20px;
+  transition:left 0.3s ease;
+  z-index:999;
+}
+
+.sidebar.active{
+  left:0;
+}
+
+.sidebar a{
+  color:#00ffcc;
+  text-decoration:none;
+  padding:15px 20px;
+  font-size:1.1rem;
+  transition:0.3s;
+}
+
+.sidebar a:hover{
+  background:rgba(0,255,204,0.1);
+  box-shadow: inset 0 0 10px #00ffcc;
+}
+
+/* ===== Hero ===== */
+.hero{
+  text-align:center;
+  padding:120px 10%;
+}
+
+.hero h1{
+  font-size:3rem;
+  text-shadow:0 0 20px #00ffcc;
+}
+
+.hero p{
+  margin-top:15px;
+  font-size:1.1rem;
+}
+
+/* ===== Grid ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+  padding:60px 10%;
+}
+
+.card{
+  padding:30px;
+  border:1px solid #00ffcc;
+  border-radius:15px;
+  background:rgba(0,255,204,0.05);
+  transition:.4s;
+  text-align:center;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 30px #00ffcc;
+}
+
+.card h3{
+  margin-bottom:15px;
+}
+
+.card a{
+  text-decoration:none;
+  color:#00ffcc;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  border-top:1px solid #00ffcc;
+  margin-top:40px;
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<div id="terminal">
+  <div id="terminal-text"></div>
+</div>
+
+<div id="main">
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="menu-btn" id="menuBtn" onclick="toggleSidebar()">☰</div>
+  <h2>Nikhil OS</h2>
+</nav>
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+  <a href="education.html">🎓 Education</a>
+  <a href="experience.html">💼 Experience</a>
+  <a href="achievements.html">🏆 Achievements</a>
+  <a href="projects.html">🧪 Projects</a>
+  <a href="contact.html">📡 Contact</a>
+</aside>
+
+<!-- Hero -->
+<section class="hero">
+  <img src="h.png" alt="Hacker Avatar" class="hero-img">
+  <h1>Access Granted</h1>
+  <p>Full-Stack Developer | Cybersecurity Enthusiast</p>
+</section>
+
+<!-- Grid -->
+<section class="grid">
+  <div class="card">
+    <h3>🧠 Profile Core</h3>
+    <p>Engineering student building AI systems & secure platforms.</p>
+    <a href="personal.html">Enter Module →</a>
+  </div>
+
+  <div class="card">
+    <h3>🎓 Education Module</h3>
+    <a href="education.html">Enter Module →</a>
+  </div>
+
+  <div class="card">
+    <h3>💼 Experience Module</h3>
+    <a href="experience.html">Enter Module →</a>
+  </div>
+
+  <div class="card">
+    <h3>🏆 Achievements Module</h3>
+    <a href="achievements.html">Enter Module →</a>
+  </div>
+
+  <div class="card">
+    <h3>🧪 Projects Lab</h3>
+    <a href="projects.html">Enter Module →</a>
+  </div>
+
+  <div class="card">
+    <h3>📡 Secure Contact Channel</h3>
+    <a href="contact.html">Initiate Connection →</a>
+  </div>
+</section>
+
+<footer>
+  System Status: Secure | © 2026 Nikhil Tiwari
+</footer>
+
+</div>
+
+<script>
+
+/* Sidebar Toggle with Icon Change */
+function toggleSidebar(){
+  const sidebar = document.getElementById("sidebar");
+  const menuBtn = document.getElementById("menuBtn");
+
+  sidebar.classList.toggle("active");
+
+  if(sidebar.classList.contains("active")){
+    menuBtn.innerHTML = "✖";
+  } else {
+    menuBtn.innerHTML = "☰";
+  }
+}
+
+/* Terminal Boot (unchanged) */
+const terminal = document.getElementById("terminal");
+const main = document.getElementById("main");
+
+if (!sessionStorage.getItem("booted")) {
+
+  const lines = [
+    "Initializing Nikhil OS...",
+    "Loading AI Modules...",
+    "Security Layer Activated...",
+    "Access Granted."
+  ];
+
+  let i = 0;
+  let j = 0;
+  let current = "";
+
+  function type(){
+    if(i < lines.length){
+      if(j < lines[i].length){
+        current += lines[i][j];
+        document.getElementById("terminal-text").innerHTML = current;
+        j++;
+        setTimeout(type, 40);
+      } else {
+        current += "<br>";
+        i++;
+        j = 0;
+        setTimeout(type, 400);
+      }
+    } else {
+      setTimeout(()=>{
+        terminal.style.display = "none";
+        main.style.display = "block";
+        sessionStorage.setItem("booted", "true");
+      }, 800);
+    }
+  }
+
+  type();
+
+} else {
+  terminal.style.display = "none";
+  main.style.display = "block";
+}
+
+/* Matrix Rain (unchanged) */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "01010101NIKHILOSSECUREAIHACKSYSTEM";
+const fontSize = 16;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = [];
+
+for(let x = 0; x < columns; x++){
+  drops[x] = Math.random() * canvas.height;
+}
+
+function drawMatrix(){
+  ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#ff0033";
+  ctx.font = fontSize + "px Orbitron";
+  ctx.shadowColor = "#ff0033";
+  ctx.shadowBlur = 12;
+
+  for(let i = 0; i < drops.length; i++){
+    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+  ctx.shadowBlur = 0;
+}
+
+setInterval(drawMatrix, 33);
+
+window.addEventListener("resize", ()=>{
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+</script>
+</body>
+</html>
