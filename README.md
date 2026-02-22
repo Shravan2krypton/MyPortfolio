@@ -160,16 +160,6 @@ UPGRADE    : AVAILABLE
   <img src="https://readme-typing-svg.herokuapp.com?color=FF0000&size=22&center=true&vCenter=true&width=700&lines=Interface+Active.;Control+The+System.;Build+Without+Limits." />
 </p>ed with precision.  
 > Dark. Minimal. Aggressive. Controlled.
-
----
-
-## ⚡ SYSTEM OVERVIEW
-
-NIKHIL OS is a high-contrast, red-black cyber interface designed to simulate a futuristic hacker terminal environment while maintaining professional structure and clean UI architecture.
-
-This is not just a website.  
-It is a digital command interface.
-
 ---
 
 ## 🧠 CORE FEATURES
@@ -186,33 +176,6 @@ It is a digital command interface.
 
 ---
 
-## 🏗 ARCHITECTURE
-
-```
-root/
-│
-├── index.html        # Landing Interface
-├── about.html        # System Identity Module
-├── achievements.html # Certification Display Grid
-├── projects.html     # Work Deployment Section
-├── contact.html      # Communication Endpoint
-└── assets/           # Static Resources
-```
-
----
-
-## 🎨 DESIGN PROTOCOL
-
-- Dominant color spectrum: #000000 / #ff0000
-- Glow-based accent lighting
-- Soft shadow layering
-- Hover-triggered elevation effects
-- Structured grid-based layout
-- Clean typography hierarchy
-- Dark radial gradient backgrounds
-
----
-
 ## ⚙ TECHNOLOGY STACK
 
 - HTML5
@@ -224,17 +187,6 @@ root/
 No bloated libraries.  
 No unnecessary overhead.  
 Pure structural control.
-
----
-
-## 🔥 UI CHARACTERISTICS
-
-- High contrast interface
-- Neon glow elements
-- Red shadow pulse effects
-- Sharp border outlines
-- Dark ambient background layering
-- Precision spacing system
 
 ---
 
