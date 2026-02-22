@@ -18,7 +18,6 @@
 ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
 ```
 
----
 
 <p align="center">
   <img src="https://img.shields.io/badge/STATUS-ONLINE-red?style=for-the-badge" />
