@@ -2,188 +2,424 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Personal | Nikhil OS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Nikhil OS Personal - Professional profile, skills, and social media connections">
+<meta name="keywords" content="personal, profile, skills, social media, professional, cybersecurity">
+<meta name="author" content="Nikhil Tiwari">
+<title>Personal Module | Nikhil OS</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
+/* ===== RESET & BASE STYLES ===== */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Courier New',monospace;
+}
+
+:root{
+  --primary-color: #00ffcc;
+  --secondary-color: #ff0033;
+  --accent-color: #ff6b6b;
+  --success-color: #00ff88;
+  --bg-color: #000000;
+  --card-bg: rgba(0,255,204,0.05);
+  --border-color: #00ffcc;
+  --text-primary: #00ffcc;
+  --text-secondary: #cccccc;
+  --shadow-glow: 0 0 20px rgba(0,255,204,0.5);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+html{
+  scroll-behavior: smooth;
 }
 
 body{
-  background:black;
-  color:#00ff88;
-  overflow:hidden;
+  font-family:'Orbitron',sans-serif;
+  background:var(--bg-color);
+  color:var(--text-primary);
+  overflow-x:hidden;
+  line-height:1.6;
+  min-height:100vh;
 }
 
-/* ===== MATRIX CANVAS ===== */
+/* ===== BACKGROUND CANVAS ===== */
 canvas{
   position:fixed;
   top:0;
   left:0;
-  z-index:-2;
+  z-index:-1;
+  opacity:0.8;
 }
 
-/* ===== NAVBAR ===== */
-nav{
-  position:fixed;
-  width:100%;
-  top:0;
-  padding:15px 40px;
+/* ===== NAVIGATION ===== */
+.navbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:rgba(0,0,0,0.7);
-  border-bottom:1px solid #00ff88;
-  backdrop-filter:blur(6px);
+  padding:20px 8%;
+  background:linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 100%);
+  border-bottom:2px solid var(--primary-color);
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
   z-index:1000;
+  backdrop-filter:blur(15px);
+  box-shadow: 0 4px 20px rgba(0,255,204,0.3);
 }
 
-nav h2{
-  letter-spacing:2px;
+.navbar h2{
+  font-size:1.8rem;
+  text-shadow: 0 0 15px var(--primary-color);
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
-nav ul{
-  list-style:none;
-  display:flex;
-  gap:25px;
-}
-
-nav a{
+.navbar a{
+  color:var(--primary-color);
   text-decoration:none;
-  color:#00ff88;
-  transition:0.3s;
+  margin-left:25px;
+  font-weight:600;
+  padding:8px 16px;
+  border-radius:20px;
+  transition: var(--transition-smooth);
+  position:relative;
+  overflow:hidden;
 }
 
-nav a:hover{
-  text-shadow:0 0 15px #00ff88;
-  color:white;
+.navbar a::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  transition: left 0.5s;
+  opacity:0.2;
+}
+
+.navbar a:hover::before{
+  left:100%;
+}
+
+.navbar a:hover{
+  text-shadow:0 0 15px var(--primary-color);
+  background:var(--card-bg);
+  transform: translateY(-2px);
 }
 
 /* ===== MAIN SECTION ===== */
-.container{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:80px;
-  flex-wrap:wrap;
-  padding:120px 10%;
-  animation:fadeUp 1.5s ease;
-}
-
-/* ===== HOLOGRAM PROFILE IMAGE ===== */
-.profile-wrapper{
+.section{
+  padding:120px 8% 80px;
+  min-height:100vh;
   position:relative;
-  width:280px;
-  height:280px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  animation:float 5s ease-in-out infinite;
 }
 
-.profile-wrapper img{
-  width:240px;
-  height:240px;
-  object-fit:cover;
-  border-radius:50%;
-  z-index:2;
-  box-shadow:0 0 25px #00ff88;
-  transition:0.4s;
+.section h1{
+  font-size:3rem;
+  text-shadow:0 0 30px var(--primary-color);
+  margin-bottom:80px;
+  text-align:center;
+  animation: slideInDown 1s ease-out;
+  position:relative;
 }
 
-.profile-wrapper img:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 50px #00ff88;
-}
-
-/* Rotating Neon Ring */
-.holo-ring{
+.section h1::after{
+  content:'';
   position:absolute;
-  width:280px;
-  height:280px;
+  bottom:-20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:100px;
+  height:3px;
+  background:linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  animation: slideRight 3s linear infinite;
+}
+
+/* ===== PERSONAL PROFILE ===== */
+.profile{
+  text-align:center;
+  max-width:900px;
+  margin:0 auto;
+  padding:60px 40px;
+  background:linear-gradient(135deg, var(--card-bg) 0%, rgba(0,255,204,0.02) 100%);
+  backdrop-filter:blur(20px);
+  border:2px solid var(--primary-color);
+  border-radius:40px 80px 40px 80px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,255,204,0.3);
+  animation: pulse 4s infinite alternate;
+  transform-style:preserve-3d;
+  perspective:1000px;
+}
+
+.profile::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:2px;
+  background:linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  animation: slideRight 4s linear infinite;
+}
+
+.profile::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle at center, transparent 0%, rgba(0,255,204,0.1) 100%);
+  opacity:0;
+  transition: opacity 0.3s;
+  pointer-events:none;
+}
+
+.profile:hover{
+  transform:rotateY(5deg) translateY(-10px);
+  box-shadow:0 40px 100px rgba(0,255,204,0.5);
+  border-color:var(--secondary-color);
+  background:linear-gradient(135deg, rgba(255,0,51,0.05) 0%, var(--card-bg) 100%);
+}
+
+.profile:hover::after{
+  opacity:1;
+}
+
+/* ===== PROFILE IMAGE ===== */
+.holographic-img{
+  width:200px;
+  height:200px;
   border-radius:50%;
-  border:3px solid transparent;
-  border-top:3px solid #00ff88;
-  border-bottom:3px solid red;
-  animation:rotateRing 6s linear infinite;
-  box-shadow:0 0 30px #00ff88;
+  object-fit:cover;
+  border:4px solid var(--primary-color);
+  box-shadow:0 0 40px var(--primary-color), inset 0 0 20px rgba(0,255,204,0.3);
+  margin-bottom:40px;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  transition: var(--transition-bounce);
+  animation: holographic 3s ease-in-out infinite, float 6s ease-in-out infinite;
+  position:relative;
+  z-index:1;
 }
 
-/* ===== CURVED GLASS PANEL ===== */
-.details{
-  max-width:520px;
-  padding:50px;
-  background:rgba(0,0,0,0.5);
-  backdrop-filter:blur(10px);
-  border:1px solid #00ff88;
-  border-radius:60px 20px 60px 20px;
-  box-shadow:0 0 40px #00ff88;
-  transition:0.5s;
+.holographic-img::before{
+  content:'';
+  position:absolute;
+  top:-10px;
+  left:-10px;
+  right:-10px;
+  bottom:-10px;
+  border:2px solid var(--primary-color);
+  border-radius:50%;
+  opacity:0.3;
+  animation: rotateRing 10s linear infinite;
 }
 
-.details:hover{
-  box-shadow:0 0 70px #00ff88;
+.holographic-img::after{
+  content:'';
+  position:absolute;
+  top:-20px;
+  left:-20px;
+  right:-20px;
+  bottom:-20px;
+  border:1px solid var(--secondary-color);
+  border-radius:50%;
+  opacity:0.2;
+  animation: rotateRing 15s linear infinite reverse;
 }
 
-.details h1{
-  margin-bottom:25px;
-  font-size:32px;
-  text-shadow:0 0 20px #00ff88;
+.holographic-img:hover{
+  transform:scale(1.15) rotateY(360deg);
+  box-shadow:0 0 80px var(--primary-color), 0 0 120px var(--secondary-color), inset 0 0 30px rgba(0,255,204,0.5);
+  border-color:var(--secondary-color);
+  animation-play-state:paused;
 }
 
-.details p{
-  margin-bottom:14px;
-  font-size:17px;
+/* ===== PROFILE INFO ===== */
+.profile h2{
+  font-size:2.2rem;
+  margin-bottom:15px;
+  color:var(--primary-color);
+  text-shadow:0 0 20px var(--primary-color);
+  animation: glow 2s ease-in-out infinite alternate;
+  position:relative;
+  z-index:1;
+}
+
+.profile p{
+  font-size:1.1rem;
+  margin:15px 0;
+  color:var(--text-secondary);
+  line-height:1.7;
+  position:relative;
+  z-index:1;
+}
+
+.profile p strong{
+  color:var(--accent-color);
+  font-weight:600;
+}
+
+/* ===== SKILLS SHOWCASE ===== */
+.skills-showcase{
+  margin:40px 0;
+  padding:30px;
+  background:rgba(0,0,0,0.3);
+  border-radius:20px;
+  border:1px solid var(--primary-color);
+  position:relative;
+  overflow:hidden;
+}
+
+.skills-showcase::before{
+  content:'SKILL MATRIX';
+  position:absolute;
+  top:-10px;
+  left:20px;
+  font-size:0.8rem;
+  color:var(--accent-color);
+  background:var(--bg-color);
+  padding:0 10px;
+}
+
+.skill-item{
+  margin:20px 0;
+  text-align:left;
+}
+
+.skill-name{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:8px;
+  font-size:0.9rem;
+  color:var(--text-primary);
+}
+
+.skill-bar{
+  height:8px;
+  background:rgba(0,255,204,0.1);
+  border-radius:10px;
+  overflow:hidden;
+  position:relative;
+}
+
+.skill-progress{
+  height:100%;
+  background:linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius:10px;
+  position:relative;
+  animation: skillLoad 2s ease-out;
+  box-shadow:0 0 10px currentColor;
+}
+
+.skill-progress::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+/* ===== TYPING ANIMATION ===== */
+.typing-text{
+  border-right:2px solid var(--primary-color);
+  animation: blink 1s infinite;
+  white-space:nowrap;
+  overflow:hidden;
 }
 
 /* ===== SOCIAL LINKS ===== */
-.social{
-  margin-top:25px;
+.social-links{
+  margin-top:40px;
   display:flex;
-  gap:15px;
+  justify-content:center;
+  gap:25px;
   flex-wrap:wrap;
+  position:relative;
+  z-index:1;
 }
 
-.social a{
-  padding:12px 18px;
-  border-radius:40px;
-  border:1px solid #00ff88;
-  text-decoration:none;
-  color:#00ff88;
-  transition:0.3s;
-  display:flex;
+.social-link{
+  display:inline-flex;
   align-items:center;
-  gap:8px;
+  gap:10px;
+  padding:15px 25px;
+  background:transparent;
+  border:2px solid var(--primary-color);
+  border-radius:30px;
+  color:var(--primary-color);
+  text-decoration:none;
+  font-weight:700;
+  transition: var(--transition-bounce);
+  position:relative;
+  overflow:hidden;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-size:0.9rem;
 }
 
-.social a:hover{
-  transform:translateY(-6px);
-  box-shadow:0 0 25px #00ff88;
+.social-link::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:0;
+  height:0;
+  background:var(--primary-color);
+  border-radius:50%;
+  transform:translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
 }
 
-.linkedin:hover{
-  background:#0077b5;
-  border-color:#0077b5;
-  color:white;
+.social-link:hover::before{
+  width:400px;
+  height:400px;
 }
 
-.github:hover{
-  background:#222;
-  border-color:#222;
-  color:white;
+.social-link:hover{
+  color:var(--bg-color);
+  border-color:var(--primary-color);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow:0 20px 50px rgba(0,255,204,0.5);
+  z-index:1;
+  text-shadow:0 0 10px var(--bg-color);
 }
 
-.instagram:hover{
-  background:linear-gradient(45deg,#f09433,#dc2743,#bc1888);
-  border-color:#dc2743;
-  color:white;
+.social-link span{
+  position:relative;
+  z-index:1;
+}
+
+.social-link .icon{
+  font-size:1.2rem;
+  position:relative;
+  z-index:1;
+  color:inherit;
+  transition: var(--transition-smooth);
+}
+
+.social-link:hover .icon{
+  color:var(--bg-color);
+  transform: scale(1.2);
+}
+
+/* Remove old social styles */
+.social{
+  display:none;
 }
 
 /* ===== ANIMATIONS ===== */
@@ -202,6 +438,21 @@ nav a:hover{
   to{opacity:1;transform:translateY(0);}
 }
 
+@keyframes skillLoad{
+  from{width:0;}
+  to{width:100%;}
+}
+
+@keyframes shimmer{
+  0%{transform:translateX(-100%);}
+  100%{transform:translateX(100%);}
+}
+
+@keyframes blink{
+  0%,50%{border-color:var(--primary-color);}
+  51%,100%{border-color:transparent;}
+}
+
 </style>
 </head>
 
@@ -209,90 +460,275 @@ nav a:hover{
 
 <canvas id="matrix"></canvas>
 
-<nav>
-  <h2>NIKHIL OS</h2>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="education.html">Education</a></li>
-    <li><a href="project.html">Projects</a></li>
-  </ul>
+<nav class="navbar">
+  <h2>Nikhil OS</h2>
+  <div>
+    <a href="index.html" aria-label="Home">🏠 Home</a>
+    <a href="projects.html" aria-label="Projects">🧪 Projects</a>
+    <a href="experience.html" aria-label="Experience">💼 Experience</a>
+    <a href="education.html" aria-label="Education">🎓 Education</a>
+    <a href="achievements.html" aria-label="Achievements">🏆 Achievements</a>
+    <a href="contact.html" aria-label="Contact">📡 Contact</a>
+  </div>
 </nav>
 
-<div class="container">
+<main>
+  <section class="section">
+    <h1>👤 Personal Identity Module</h1>
 
-  <!-- HOLOGRAM IMAGE -->
-  <div class="profile-wrapper">
-    <div class="holo-ring"></div>
-    <img src="ceo.jpg" alt="Nikhil Tiwari">
-  </div>
-
-  <!-- DETAILS PANEL -->
-  <div class="details">
-    <h1>Personal Identity</h1>
-    <p><strong>Name:</strong> Nikhil Tiwari</p>
-    <p><strong>DOB:</strong> 24 October 2006</p>
-    <p><strong>Location:</strong> Vadodara, Gujarat</p>
-    <p><strong>Email:</strong> nikhil.25011038g@gmail.com</p>
-    <p><strong>Languages:</strong> English, Hindi, Gujarati</p>
-
-    <div class="social">
-      <a href="https://www.linkedin.com/in/nikhil-tiwari-3a454133a/" target="_blank" class="linkedin">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-
-      <a href="https://github.com/Shravan2krypton" target="_blank" class="github">
-        <i class="fab fa-github"></i> GitHub
-      </a>
-
-      <a href="https://www.instagram.com/ult1mate.void/" target="_blank" class="instagram">
-        <i class="fab fa-instagram"></i> Instagram
-      </a>
+    <div class="profile">
+      <img src="ceo.jpg" alt="Nikhil Tiwari - Professional Profile" class="holographic-img">
+      
+      <h2>Nikhil Tiwari</h2>
+      <p><strong>Identity:</strong> <span class="typing-text" data-text="Full-Stack Developer & Cybersecurity Enthusiast"></span></p>
+      <p><strong>Birth Date:</strong> <span class="typing-text" data-text="24 October 2006"></span></p>
+      <p><strong>Location:</strong> <span class="typing-text" data-text="Vadodara, Gujarat, India"></span></p>
+      <p><strong>Communication:</strong> <span class="typing-text" data-text="nikhil.25011038g@gmail.com"></span></p>
+      <p><strong>Language Matrix:</strong> <span class="typing-text" data-text="English, Hindi, Gujarati"></span></p>
+      
+      <!-- Skills Showcase -->
+      <div class="skills-showcase">
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>JavaScript</span>
+            <span>90%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 90%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Python</span>
+            <span>85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 85%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Cybersecurity</span>
+            <span>80%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 80%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>React</span>
+            <span>88%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="width: 88%;"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/nikhil-tiwari-3a454133a/" target="_blank" class="social-link" aria-label="LinkedIn Profile">
+          <i class="fab fa-linkedin icon"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://github.com/Shravan2krypton" target="_blank" class="social-link" aria-label="GitHub Profile">
+          <i class="fab fa-github icon"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.instagram.com/ult1mate.void/" target="_blank" class="social-link" aria-label="Instagram Profile">
+          <i class="fab fa-instagram icon"></i>
+          <span>Instagram</span>
+        </a>
+      </div>
     </div>
-  </div>
+  </section>
+</main>
 
-</div>
+<footer>
+  <p>System Status: Secure | © 2026 Nikhil Tiwari</p>
+</footer>
 
 <script>
-/* ===== DIGITAL MATRIX RAIN ===== */
+/* ===== ENHANCED MATRIX RAIN ===== */
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
-
-const letters = "01NIKHILOS";
-const fontSize = 16;
-const columns = canvas.width / fontSize;
-const drops = [];
-
-for(let i = 0; i < columns; i++){
-  drops[i] = 1;
-}
-
-function draw(){
-  ctx.fillStyle = "rgba(0,0,0,0.05)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  ctx.fillStyle = "red";
-  ctx.font = fontSize + "px monospace";
-
-  for(let i = 0; i < drops.length; i++){
-    const text = letters.charAt(Math.floor(Math.random()*letters.length));
-    ctx.fillText(text, i*fontSize, drops[i]*fontSize);
-
-    if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
-      drops[i] = 0;
-    }
-    drops[i]++;
-  }
-}
-
-setInterval(draw,33);
-
-window.addEventListener("resize",()=>{
+function resizeCanvas(){
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+
+const letters = "01010101NIKHILOSSECUREAIHACKSYSTEMPERSONALIDENTITYSKILLS";
+const fontSize = 16;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = [];
+
+for(let x = 0; x < columns; x++){
+  drops[x] = Math.random() * canvas.height;
+}
+
+function drawMatrix(){
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Create gradient effect
+  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  gradient.addColorStop(0, "#ff0033");
+  gradient.addColorStop(0.5, "#00ffcc");
+  gradient.addColorStop(1, "#ff0033");
+  
+  ctx.fillStyle = gradient;
+  ctx.shadowColor = "#00ffcc";
+  ctx.shadowBlur = 15;
+  ctx.font = fontSize + "px Orbitron";
+
+  for(let i = 0; i < drops.length; i++){
+    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    const opacity = 1 - (drops[i] * fontSize) / canvas.height;
+    ctx.globalAlpha = opacity;
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    
+    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
+    }
+    
+    drops[i]++;
+  }
+  
+  ctx.globalAlpha = 1;
+  ctx.shadowBlur = 0;
+}
+
+setInterval(drawMatrix, 30);
+
+window.addEventListener("resize", resizeCanvas);
+
+/* ===== TYPING ANIMATION ===== */
+function typeWriter(element, text, speed = 50){
+  let i = 0;
+  element.textContent = '';
+  
+  function type(){
+    if(i < text.length){
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+  
+  type();
+}
+
+// Initialize typing animations
+const typingElements = document.querySelectorAll('.typing-text');
+typingElements.forEach((element, index) => {
+  const text = element.getAttribute('data-text');
+  setTimeout(() => {
+    typeWriter(element, text, 50);
+  }, index * 500);
 });
+
+/* ===== PARTICLE SYSTEM ===== */
+function createParticle(x, y){
+  const particle = document.createElement('div');
+  particle.style.position = 'fixed';
+  particle.style.width = '4px';
+  particle.style.height = '4px';
+  particle.style.background = 'var(--primary-color)';
+  particle.style.borderRadius = '50%';
+  particle.style.pointerEvents = 'none';
+  particle.style.left = x + 'px';
+  particle.style.top = y + 'px';
+  particle.style.boxShadow = '0 0 10px var(--primary-color)';
+  particle.style.zIndex = '9999';
+  
+  document.body.appendChild(particle);
+  
+  const angle = Math.random() * Math.PI * 2;
+  const velocity = Math.random() * 2 + 1;
+  let opacity = 1;
+  
+  const animate = () => {
+    const dx = Math.cos(angle) * velocity;
+    const dy = Math.sin(angle) * velocity;
+    
+    particle.style.left = (parseFloat(particle.style.left) + dx) + 'px';
+    particle.style.top = (parseFloat(particle.style.top) + dy) + 'px';
+    
+    opacity -= 0.02;
+    particle.style.opacity = opacity;
+    
+    if(opacity > 0){
+      requestAnimationFrame(animate);
+    } else {
+      particle.remove();
+    }
+  };
+  
+  animate();
+}
+
+// Add particle effects on hover
+document.querySelectorAll('.social-link').forEach(link => {
+  link.addEventListener('mouseenter', (e) => {
+    const rect = link.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    
+    for(let i = 0; i < 10; i++){
+      setTimeout(() => {
+        createParticle(x, y);
+      }, i * 50);
+    }
+  });
+});
+
+/* ===== SKILL BAR ANIMATIONS ===== */
+const skillBars = document.querySelectorAll('.skill-progress');
+const observerOptions = {
+  threshold: 0.5,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const bar = entry.target;
+      const targetWidth = bar.style.width;
+      bar.style.width = '0%';
+      
+      setTimeout(() => {
+        bar.style.width = targetWidth;
+      }, 200);
+    }
+  });
+}, observerOptions);
+
+skillBars.forEach(bar => {
+  skillObserver.observe(bar);
+});
+
+/* ===== PROFILE ENTRANCE ANIMATION ===== */
+const profile = document.querySelector('.profile');
+profile.style.opacity = '0';
+profile.style.animation = 'fadeUp 1s ease-out 0.5s forwards';
+
+/* Add smooth scroll behavior */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
 </script>
 
 </body>

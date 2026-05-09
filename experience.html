@@ -3,123 +3,456 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Experience | Nikhil OS</title>
+<meta name="description" content="Nikhil OS Experience - Professional journey and work experience in AI, cybersecurity, and full-stack development">
+<meta name="keywords" content="experience, work, AI developer, cybersecurity, professional, portfolio">
+<meta name="author" content="Nikhil Tiwari">
+<title>Experience Module | Nikhil OS</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+/* ===== RESET & BASE STYLES ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --primary-color: #00ffcc;
+  --secondary-color: #ff0033;
+  --accent-color: #ff6b6b;
+  --success-color: #00ff88;
+  --bg-color: #000000;
+  --card-bg: rgba(0,255,204,0.05);
+  --border-color: #00ffcc;
+  --text-primary: #00ffcc;
+  --text-secondary: #cccccc;
+  --shadow-glow: 0 0 20px rgba(0,255,204,0.5);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+html{
+  scroll-behavior: smooth;
+}
 
 body{
   font-family:'Orbitron',sans-serif;
-  background:black;
-  color:#00ffcc;
+  background:var(--bg-color);
+  color:var(--text-primary);
   overflow-x:hidden;
+  line-height:1.6;
+  min-height:100vh;
 }
 
-/* Matrix */
+/* ===== BACKGROUND CANVAS ===== */
 canvas{
   position:fixed;
   top:0;
   left:0;
   z-index:-1;
+  opacity:0.8;
 }
 
-/* Navbar */
+/* ===== NAVIGATION ===== */
 .navbar{
   display:flex;
   justify-content:space-between;
+  align-items:center;
   padding:20px 8%;
-  border-bottom:1px solid #00ffcc;
+  background:linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 100%);
+  border-bottom:2px solid var(--primary-color);
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  backdrop-filter:blur(15px);
+  box-shadow: 0 4px 20px rgba(0,255,204,0.3);
+}
+
+.navbar h2{
+  font-size:1.8rem;
+  text-shadow: 0 0 15px var(--primary-color);
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
 .navbar a{
-  color:#00ffcc;
+  color:var(--primary-color);
   text-decoration:none;
-  margin-left:20px;
+  margin-left:25px;
+  font-weight:600;
+  padding:8px 16px;
+  border-radius:20px;
+  transition: var(--transition-smooth);
+  position:relative;
+  overflow:hidden;
+}
+
+.navbar a::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  transition: left 0.5s;
+  opacity:0.2;
+}
+
+.navbar a:hover::before{
+  left:100%;
 }
 
 .navbar a:hover{
-  text-shadow:0 0 10px #00ffcc;
+  text-shadow:0 0 15px var(--primary-color);
+  background:var(--card-bg);
+  transform: translateY(-2px);
 }
 
-/* Section */
+/* ===== MAIN SECTION ===== */
 .section{
-  padding:80px 10%;
+  padding:120px 8% 80px;
+  min-height:100vh;
+  position:relative;
 }
 
 .section h1{
+  font-size:3rem;
+  text-shadow:0 0 30px var(--primary-color);
+  margin-bottom:80px;
   text-align:center;
-  margin-bottom:50px;
-  text-shadow:0 0 20px #00ffcc;
+  animation: slideInDown 1s ease-out;
+  position:relative;
 }
 
-/* Experience Cards */
+.section h1::after{
+  content:'';
+  position:absolute;
+  bottom:-20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:100px;
+  height:3px;
+  background:linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  animation: slideRight 3s linear infinite;
+}
+
+/* ===== EXPERIENCE CONTAINER ===== */
 .exp-container{
   display:grid;
-  gap:30px;
+  gap:40px;
+  max-width:1000px;
+  margin:0 auto;
 }
 
 .exp-card{
-  padding:30px;
-  background:rgba(0,255,204,0.05);
-  border-left:4px solid #00ffcc;
-  backdrop-filter:blur(10px);
-  border-radius:20px 60px 20px 60px;
-  box-shadow:0 0 25px rgba(0,255,204,0.2);
-  transition:.3s;
+  padding:40px 35px;
+  background:linear-gradient(135deg, var(--card-bg) 0%, rgba(0,255,204,0.02) 100%);
+  border-left:4px solid var(--primary-color);
+  backdrop-filter:blur(15px);
+  border-radius:25px 60px 25px 60px;
+  box-shadow:0 10px 40px rgba(0,255,204,0.2);
+  transition: var(--transition-bounce);
+  position:relative;
+  overflow:hidden;
+  transform-style:preserve-3d;
+}
+
+.exp-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:2px;
+  background:linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  animation: slideRight 4s linear infinite;
+}
+
+.exp-card::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle at center, transparent 0%, rgba(0,255,204,0.1) 100%);
+  opacity:0;
+  transition: opacity 0.3s;
+  pointer-events:none;
 }
 
 .exp-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 40px rgba(0,255,204,0.5);
+  transform:translateY(-15px) rotateY(5deg);
+  box-shadow:0 20px 60px rgba(0,255,204,0.5);
+  border-left-color:var(--secondary-color);
+  background:linear-gradient(135deg, rgba(255,0,51,0.05) 0%, var(--card-bg) 100%);
+}
+
+.exp-card:hover::after{
+  opacity:1;
 }
 
 .exp-card h3{
-  margin-bottom:10px;
+  margin-bottom:15px;
+  font-size:1.5rem;
+  color:var(--primary-color);
+  text-shadow:0 0 15px var(--primary-color);
+  transition: var(--transition-smooth);
+  position:relative;
+  z-index:1;
 }
 
-/* Add Form */
+.exp-card:hover h3{
+  color:var(--secondary-color);
+  text-shadow:0 0 20px var(--secondary-color);
+  transform: translateX(5px);
+}
+
+.exp-card p{
+  color:var(--text-secondary);
+  line-height:1.7;
+  position:relative;
+  z-index:1;
+}
+
+.exp-card p strong{
+  color:var(--accent-color);
+  font-weight:600;
+}
+
+/* ===== ADD EXPERIENCE FORM ===== */
 .add-form{
-  margin-top:60px;
-  padding:30px;
-  border:1px solid #00ffcc;
-  border-radius:20px;
+  margin-top:80px;
+  padding:50px 40px;
+  border:2px solid var(--primary-color);
+  border-radius:30px;
+  background:linear-gradient(135deg, var(--card-bg) 0%, rgba(0,255,204,0.02) 100%);
+  backdrop-filter:blur(15px);
+  position:relative;
+  overflow:hidden;
+  max-width:800px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.add-form::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:2px;
+  background:linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  animation: slideRight 3s linear infinite;
+}
+
+.add-form h3{
+  text-align:center;
+  margin-bottom:40px;
+  font-size:1.8rem;
+  color:var(--primary-color);
+  text-shadow:0 0 20px var(--primary-color);
+  position:relative;
+}
+
+.add-form h3::after{
+  content:'';
+  position:absolute;
+  bottom:-15px;
+  left:50%;
+  transform:translateX(-50%);
+  width:80px;
+  height:2px;
+  background:var(--accent-color);
 }
 
 .add-form input,
 .add-form textarea{
   width:100%;
-  margin-bottom:15px;
-  padding:10px;
-  background:transparent;
-  border:none;
-  border-bottom:1px solid #00ffcc;
-  color:#00ffcc;
+  margin-bottom:25px;
+  padding:18px 20px;
+  background:rgba(0,0,0,0.5);
+  border:2px solid transparent;
+  border-bottom:2px solid var(--primary-color);
+  color:var(--text-primary);
   font-family:'Orbitron';
   outline:none;
+  border-radius:15px;
+  transition: var(--transition-smooth);
+  font-size:1rem;
+}
+
+.add-form input:focus,
+.add-form textarea:focus{
+  border-bottom-color:var(--secondary-color);
+  background:rgba(0,0,0,0.7);
+  box-shadow:0 10px 30px -10px var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.add-form input::placeholder,
+.add-form textarea::placeholder{
+  color:var(--text-secondary);
+  opacity:0.7;
+}
+
+.add-form textarea{
+  min-height:120px;
+  resize:vertical;
 }
 
 .add-form button{
-  padding:10px 20px;
+  width:100%;
+  padding:18px 30px;
   background:transparent;
-  border:1px solid #00ffcc;
-  color:#00ffcc;
+  border:2px solid var(--primary-color);
+  color:var(--primary-color);
+  font-family:'Orbitron';
   cursor:pointer;
-  transition:.3s;
+  transition: var(--transition-bounce);
+  font-weight:700;
+  font-size:1.1rem;
+  border-radius:30px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  position:relative;
+  overflow:hidden;
+}
+
+.add-form button::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:0;
+  height:0;
+  background:var(--primary-color);
+  border-radius:50%;
+  transform:translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.add-form button:hover::before{
+  width:400px;
+  height:400px;
 }
 
 .add-form button:hover{
-  background:#00ffcc;
-  color:black;
-  box-shadow:0 0 15px #00ffcc;
+  color:var(--bg-color);
+  border-color:var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow:0 15px 40px rgba(0,255,204,0.5);
+  z-index:1;
 }
 
+.add-form button:active{
+  transform: translateY(-1px);
+}
+
+/* ===== FOOTER ===== */
 footer{
   text-align:center;
-  padding:30px;
-  border-top:1px solid #00ffcc;
-  margin-top:40px;
+  padding:40px 20px;
+  border-top:2px solid var(--primary-color);
+  margin-top:80px;
+  background:linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+  position:relative;
+  overflow:hidden;
+}
+
+footer::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  animation: slideRight 3s linear infinite;
+}
+
+footer p{
+  color:var(--text-secondary);
+  font-size:0.9rem;
+  letter-spacing:1px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes glow{
+  from{ text-shadow: 0 0 15px var(--primary-color); }
+  to{ text-shadow: 0 0 25px var(--primary-color), 0 0 35px var(--primary-color); }
+}
+
+@keyframes slideInDown{
+  from{ opacity: 0; transform: translateY(-50px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideRight{
+  from{ transform: translateX(-100%); }
+  to{ transform: translateX(100%); }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px){
+  .navbar{
+    padding:15px 5%;
+    flex-direction:column;
+    gap:15px;
+  }
+  
+  .navbar h2{
+    font-size:1.4rem;
+  }
+  
+  .navbar a{
+    margin:0 10px;
+    font-size:0.9rem;
+  }
+  
+  .section h1{
+    font-size:2.5rem;
+  }
+  
+  .exp-card{
+    padding:30px 25px;
+  }
+  
+  .add-form{
+    padding:35px 25px;
+  }
+}
+
+@media (max-width: 480px){
+  .section h1{
+    font-size:2rem;
+  }
+  
+  .navbar{
+    padding:10px 3%;
+  }
+  
+  .navbar a{
+    font-size:0.8rem;
+    padding:6px 12px;
+  }
+  
+  .exp-card{
+    padding:25px 20px;
+  }
+  
+  .add-form{
+    padding:30px 20px;
+  }
+  
+  .exp-card h3{
+    font-size:1.3rem;
+  }
 }
 </style>
 </head>
@@ -130,36 +463,36 @@ footer{
 <nav class="navbar">
   <h2>Nikhil OS</h2>
   <div>
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html" aria-label="Home">🏠 Home</a>
+    <a href="projects.html" aria-label="Projects">🧪 Projects</a>
+    <a href="education.html" aria-label="Education">🎓 Education</a>
+    <a href="achievements.html" aria-label="Achievements">🏆 Achievements</a>
+    <a href="contact.html" aria-label="Contact">📡 Contact</a>
   </div>
 </nav>
 
-<section class="section">
-  <h1>💼 Experience Module</h1>
+<main>
+  <section class="section">
+    <h1>💼 Experience Module</h1>
 
-  <div class="exp-container" id="experience-list"></div>
+    <div class="exp-container" id="experience-list"></div>
 
-  <div class="add-form">
-    <h3>Add New Experience</h3>
-    <input type="text" id="role" placeholder="Role / Position" required>
-    <input type="text" id="company" placeholder="Company Name" required>
-    <textarea id="description" placeholder="Describe your work..." required></textarea>
-    <button onclick="addExperience()">Save Experience</button>
-  </div>
-</section>
+    <div class="add-form">
+      <h3>Add New Experience</h3>
+      <input type="text" id="role" placeholder="Role / Position" required aria-label="Role">
+      <input type="text" id="company" placeholder="Company Name" required aria-label="Company">
+      <textarea id="description" placeholder="Describe your work..." required aria-label="Description"></textarea>
+      <button onclick="addExperience()">Save Experience</button>
+    </div>
+  </section>
+</main>
 
 <footer>
-  Experience Database Active | © 2026 Nikhil Tiwari
+  <p>Experience Database Active | © 2026 Nikhil Tiwari</p>
 </footer>
 
 <script>
-
-/* ============================= */
-/* EXPERIENCE STORAGE SYSTEM */
-/* ============================= */
-
+/* ===== ENHANCED EXPERIENCE STORAGE SYSTEM ===== */
 const defaultExperiences = [
   {
     role: "AI Developer Intern",
@@ -183,15 +516,22 @@ function loadExperiences(){
 
   const experiences = JSON.parse(localStorage.getItem("experiences"));
 
-  experiences.forEach(exp => {
-    const div = document.createElement("div");
-    div.className = "exp-card";
-    div.innerHTML = `
+  experiences.forEach((exp, index) => {
+    const article = document.createElement("article");
+    article.className = "exp-card";
+    article.style.opacity = "0";
+    article.innerHTML = `
       <h3>${exp.role}</h3>
       <p><strong>${exp.company}</strong></p>
       <p>${exp.description}</p>
     `;
-    list.appendChild(div);
+    list.appendChild(article);
+    
+    // Add entrance animation
+    setTimeout(() => {
+      article.style.animation = 'slideInUp 0.6s ease-out';
+      article.style.opacity = '1';
+    }, index * 200);
   });
 }
 
@@ -205,9 +545,16 @@ function addExperience(){
     experiences.push({role, company, description});
     localStorage.setItem("experiences", JSON.stringify(experiences));
 
-    document.getElementById("role").value = "";
-    document.getElementById("company").value = "";
-    document.getElementById("description").value = "";
+    // Clear form with animation
+    const form = document.querySelector('.add-form');
+    form.style.animation = 'pulse 0.5s ease-out';
+    
+    setTimeout(() => {
+      document.getElementById("role").value = "";
+      document.getElementById("company").value = "";
+      document.getElementById("description").value = "";
+      form.style.animation = '';
+    }, 500);
 
     loadExperiences();
   }
@@ -215,17 +562,18 @@ function addExperience(){
 
 loadExperiences();
 
-/* ============================= */
-/* MATRIX RAIN */
-/* ============================= */
-
+/* ===== ENHANCED MATRIX RAIN ===== */
 const canvas = document.getElementById("bg");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
 
-const letters = "01010101NIKHILOSSECUREAIHACKSYSTEM";
+resizeCanvas();
+
+const letters = "01010101NIKHILOSSECUREAIHACKSYSTEMEXPERIENCE";
 const fontSize = 16;
 const columns = Math.floor(canvas.width / fontSize);
 const drops = [];
@@ -235,32 +583,52 @@ for(let x = 0; x < columns; x++){
 }
 
 function drawMatrix(){
-  ctx.fillStyle = "rgba(0,0,0,0.08)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle="#ff0033";
-  ctx.font=fontSize+"px Orbitron";
-  ctx.shadowColor="#ff0033";
-  ctx.shadowBlur=12;
+  // Create gradient effect
+  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  gradient.addColorStop(0, "#ff0033");
+  gradient.addColorStop(0.5, "#00ffcc");
+  gradient.addColorStop(1, "#ff0033");
+  
+  ctx.fillStyle = gradient;
+  ctx.shadowColor = "#00ffcc";
+  ctx.shadowBlur = 15;
+  ctx.font = fontSize + "px Orbitron";
 
-  for(let i=0;i<drops.length;i++){
-    const text=letters.charAt(Math.floor(Math.random()*letters.length));
-    ctx.fillText(text,i*fontSize,drops[i]*fontSize);
-
-    if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
-      drops[i]=0;
+  for(let i = 0; i < drops.length; i++){
+    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    const opacity = 1 - (drops[i] * fontSize) / canvas.height;
+    ctx.globalAlpha = opacity;
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    
+    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
     }
+    
     drops[i]++;
   }
-  ctx.shadowBlur=0;
+  
+  ctx.globalAlpha = 1;
+  ctx.shadowBlur = 0;
 }
 
-setInterval(drawMatrix,33);
+setInterval(drawMatrix, 30);
 
-window.addEventListener("resize",()=>{
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
+window.addEventListener("resize", resizeCanvas);
+
+/* Add smooth scroll behavior */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
 });
+
 </script>
 
 </body>

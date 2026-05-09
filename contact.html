@@ -3,150 +3,387 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact | Nikhil OS</title>
+<meta name="description" content="Nikhil OS Contact - Secure communication channel for professional inquiries">
+<meta name="keywords" content="contact, email, professional, communication, cybersecurity">
+<meta name="author" content="Nikhil Tiwari">
+<title>Contact Module | Nikhil OS</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+/* ===== RESET & BASE STYLES ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --primary-color: #00ffcc;
+  --secondary-color: #ff0033;
+  --accent-color: #ff6b6b;
+  --success-color: #00ff88;
+  --bg-color: #000000;
+  --card-bg: rgba(0,255,204,0.05);
+  --border-color: #00ffcc;
+  --text-primary: #00ffcc;
+  --text-secondary: #cccccc;
+  --shadow-glow: 0 0 20px rgba(0,255,204,0.5);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+html{
+  scroll-behavior: smooth;
+}
 
 body{
   font-family:'Orbitron',sans-serif;
-  background:black;
-  color:#00ffcc;
+  background:var(--bg-color);
+  color:var(--text-primary);
   overflow-x:hidden;
+  line-height:1.6;
+  min-height:100vh;
 }
 
-/* ===== Matrix Canvas ===== */
+/* ===== BACKGROUND CANVAS ===== */
 canvas{
   position:fixed;
   top:0;
   left:0;
   z-index:-1;
+  opacity:0.8;
 }
 
-/* ===== Navbar ===== */
+/* ===== NAVIGATION ===== */
 .navbar{
   display:flex;
   justify-content:space-between;
+  align-items:center;
   padding:20px 8%;
-  border-bottom:1px solid #00ffcc;
+  background:linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 100%);
+  border-bottom:2px solid var(--primary-color);
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  backdrop-filter:blur(15px);
+  box-shadow: 0 4px 20px rgba(0,255,204,0.3);
+}
+
+.navbar h2{
+  font-size:1.8rem;
+  text-shadow: 0 0 15px var(--primary-color);
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
 .navbar a{
-  color:#00ffcc;
+  color:var(--primary-color);
   text-decoration:none;
-  margin-left:20px;
-  transition:.3s;
+  margin-left:25px;
+  font-weight:600;
+  padding:8px 16px;
+  border-radius:20px;
+  transition: var(--transition-smooth);
+  position:relative;
+  overflow:hidden;
+}
+
+.navbar a::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  transition: left 0.5s;
+  opacity:0.2;
+}
+
+.navbar a:hover::before{
+  left:100%;
 }
 
 .navbar a:hover{
-  text-shadow:0 0 10px #00ffcc;
+  text-shadow:0 0 15px var(--primary-color);
+  background:var(--card-bg);
+  transform: translateY(-2px);
 }
 
-/* ===== Contact Section ===== */
+/* ===== CONTACT SECTION ===== */
 .contact-section{
   min-height:85vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:60px 10%;
+  padding:120px 8% 80px;
+  position:relative;
 }
 
-/* ===== Cyber Glass Form ===== */
+/* ===== CYBER GLASS FORM ===== */
 .contact-form{
   width:100%;
-  max-width:600px;
-  padding:50px;
-  background:rgba(0,255,204,0.05);
-  backdrop-filter:blur(15px);
-  border:1px solid rgba(0,255,204,0.4);
-  border-radius:30px 80px 30px 80px;
+  max-width:700px;
+  padding:60px 50px;
+  background:linear-gradient(135deg, var(--card-bg) 0%, rgba(0,255,204,0.02) 100%);
+  backdrop-filter:blur(20px);
+  border:2px solid var(--primary-color);
+  border-radius:40px 80px 40px 80px;
   position:relative;
-  box-shadow:0 0 40px rgba(0,255,204,0.2);
-  animation:pulse 4s infinite alternate;
+  box-shadow:0 20px 60px rgba(0,255,204,0.3);
+  animation: pulse 4s infinite alternate;
+  overflow:hidden;
 }
 
-/* Soft pulse glow */
-@keyframes pulse{
-  from{box-shadow:0 0 20px rgba(0,255,204,0.2)}
-  to{box-shadow:0 0 50px rgba(0,255,204,0.5)}
+.contact-form::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:2px;
+  background:linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  animation: slideRight 3s linear infinite;
+}
+
+.contact-form::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle at center, transparent 0%, rgba(0,255,204,0.1) 100%);
+  opacity:0;
+  transition: opacity 0.3s;
+  pointer-events:none;
+}
+
+.contact-form:hover::after{
+  opacity:1;
 }
 
 .contact-form h2{
   text-align:center;
-  margin-bottom:30px;
-  text-shadow:0 0 15px #00ffcc;
+  margin-bottom:40px;
+  font-size:2rem;
+  color:var(--primary-color);
+  text-shadow:0 0 20px var(--primary-color);
   position:relative;
 }
 
-/* Holographic underline */
 .contact-form h2::after{
-  content:"";
-  display:block;
+  content:'';
+  position:absolute;
+  bottom:-15px;
+  left:50%;
+  transform:translateX(-50%);
+  width:100px;
   height:2px;
-  width:60%;
-  margin:10px auto 0;
-  background:linear-gradient(to right,transparent,#00ffcc,transparent);
+  background:linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  animation: slideRight 3s linear infinite;
 }
 
-/* Inputs */
+/* ===== INPUT GROUP ===== */
 .input-group{
-  margin-bottom:25px;
+  margin-bottom:30px;
+  position:relative;
 }
 
 .input-group input,
 .input-group textarea{
   width:100%;
-  padding:15px;
-  background:transparent;
-  border:none;
-  border-bottom:1px solid #00ffcc;
-  color:#00ffcc;
-  font-family:'Orbitron',sans-serif;
+  padding:20px 25px;
+  background:rgba(0,0,0,0.6);
+  border:2px solid transparent;
+  border-bottom:2px solid var(--primary-color);
+  color:var(--text-primary);
+  font-family:'Orbitron';
   outline:none;
-  transition:.3s;
+  border-radius:15px;
+  transition: var(--transition-smooth);
+  font-size:1rem;
+  backdrop-filter:blur(5px);
 }
 
 .input-group input:focus,
 .input-group textarea:focus{
-  border-bottom:1px solid #ff0033;
-  box-shadow:0 10px 20px -10px #ff0033;
+  border-bottom-color:var(--secondary-color);
+  background:rgba(0,0,0,0.8);
+  box-shadow:0 15px 40px -10px var(--secondary-color);
+  transform: translateY(-3px);
+  border-color:var(--secondary-color);
 }
 
-/* Button */
+.input-group input::placeholder,
+.input-group textarea::placeholder{
+  color:var(--text-secondary);
+  opacity:0.7;
+}
+
+.input-group textarea{
+  min-height:140px;
+  resize:vertical;
+}
+
+/* ===== BUTTON ===== */
 button{
   width:100%;
-  padding:15px;
+  padding:20px 30px;
   background:transparent;
-  border:1px solid #00ffcc;
-  color:#00ffcc;
-  font-family:'Orbitron',sans-serif;
+  border:2px solid var(--primary-color);
+  color:var(--primary-color);
+  font-family:'Orbitron';
   cursor:pointer;
-  transition:.4s;
-  letter-spacing:2px;
+  transition: var(--transition-bounce);
+  font-weight:700;
+  font-size:1.1rem;
+  border-radius:30px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  position:relative;
+  overflow:hidden;
+}
+
+button::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:0;
+  height:0;
+  background:var(--primary-color);
+  border-radius:50%;
+  transform:translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before{
+  width:500px;
+  height:500px;
 }
 
 button:hover{
-  background:#00ffcc;
-  color:black;
-  box-shadow:0 0 20px #00ffcc;
+  color:var(--bg-color);
+  border-color:var(--primary-color);
+  transform: translateY(-5px);
+  box-shadow:0 20px 50px rgba(0,255,204,0.5);
+  z-index:1;
 }
 
-/* Status Text */
+button:active{
+  transform: translateY(-2px);
+}
+
+/* ===== STATUS TEXT ===== */
 #status{
-  margin-top:15px;
+  margin-top:20px;
   text-align:center;
-  font-size:14px;
-  min-height:20px;
+  font-size:1rem;
+  min-height:25px;
+  color:var(--success-color);
+  font-weight:600;
+  text-shadow:0 0 10px var(--success-color);
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
-/* Footer */
+/* ===== FOOTER ===== */
 footer{
   text-align:center;
-  padding:30px;
-  border-top:1px solid #00ffcc;
-  margin-top:40px;
+  padding:40px 20px;
+  border-top:2px solid var(--primary-color);
+  margin-top:80px;
+  background:linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%);
+  position:relative;
+  overflow:hidden;
+}
+
+footer::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  animation: slideRight 3s linear infinite;
+}
+
+footer p{
+  color:var(--text-secondary);
+  font-size:0.9rem;
+  letter-spacing:1px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes glow{
+  from{ text-shadow: 0 0 15px var(--primary-color); }
+  to{ text-shadow: 0 0 25px var(--primary-color), 0 0 35px var(--primary-color); }
+}
+
+@keyframes pulse{
+  from{ box-shadow:0 20px 60px rgba(0,255,204,0.2); }
+  to{ box-shadow:0 30px 80px rgba(0,255,204,0.5); }
+}
+
+@keyframes slideRight{
+  from{ transform: translateX(-100%); }
+  to{ transform: translateX(100%); }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px){
+  .navbar{
+    padding:15px 5%;
+    flex-direction:column;
+    gap:15px;
+  }
+  
+  .navbar h2{
+    font-size:1.4rem;
+  }
+  
+  .navbar a{
+    margin:0 10px;
+    font-size:0.9rem;
+  }
+  
+  .contact-section{
+    padding:100px 5% 60px;
+  }
+  
+  .contact-form{
+    padding:40px 30px;
+    max-width:500px;
+  }
+}
+
+@media (max-width: 480px){
+  .navbar{
+    padding:10px 3%;
+  }
+  
+  .navbar a{
+    font-size:0.8rem;
+    padding:6px 12px;
+  }
+  
+  .contact-form{
+    padding:30px 25px;
+    max-width:400px;
+  }
+  
+  .contact-form h2{
+    font-size:1.6rem;
+  }
+  
+  .input-group input,
+  .input-group textarea{
+    padding:15px 20px;
+  }
 }
 </style>
 </head>
@@ -157,8 +394,11 @@ footer{
 <nav class="navbar">
   <h2>Nikhil OS</h2>
   <div>
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
+    <a href="index.html" aria-label="Home">🏠 Home</a>
+    <a href="projects.html" aria-label="Projects">🧪 Projects</a>
+    <a href="experience.html" aria-label="Experience">💼 Experience</a>
+    <a href="education.html" aria-label="Education">🎓 Education</a>
+    <a href="achievements.html" aria-label="Achievements">🏆 Achievements</a>
   </div>
 </nav>
 
@@ -188,47 +428,29 @@ footer{
 </section>
 
 <footer>
-  Secure Line Active | © 2026 Nikhil Tiwari
+  <p>System Status: Secure | 2026 Nikhil Tiwari</p>
 </footer>
 
 <!-- EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
-(function(){
+/* ===== EMAIL CONFIGURATION ===== */
+(function() {
   emailjs.init("kPtESDWMoCivZQ5DX");
 })();
 
-document.getElementById("contact-form").addEventListener("submit", function(e){
-  e.preventDefault();
-
-  const status = document.getElementById("status");
-  status.innerHTML = "Transmitting...";
-
-  emailjs.sendForm(
-    "service_zi6c4tn",
-    "template_lws5hwr",
-    this
-  ).then(function(){
-      status.innerHTML = "✅ Transmission Successful!";
-      document.getElementById("contact-form").reset();
-  }, function(error){
-      status.innerHTML = "❌ Transmission Failed";
-      console.log(error);
-  });
-});
-
-/* ============================= */
-/* RED MATRIX DIGITAL RAIN */
-/* ============================= */
-
+/* ===== ENHANCED MATRIX RAIN ===== */
 const canvas = document.getElementById("bg");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
 
-const letters = "01010101NIKHILOSSECUREAIHACKSYSTEM";
+resizeCanvas();
+
+const letters = "01010101NIKHILOSSECUREAIHACKSYSTEMCONTACTMESSAGESECURE";
 const fontSize = 16;
 const columns = Math.floor(canvas.width / fontSize);
 const drops = [];
@@ -238,34 +460,104 @@ for(let x = 0; x < columns; x++){
 }
 
 function drawMatrix(){
-  ctx.fillStyle = "rgba(0, 0, 0, 0.08)";
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = "#ff0033";
+  // Create gradient effect
+  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  gradient.addColorStop(0, "#ff0033");
+  gradient.addColorStop(0.5, "#00ffcc");
+  gradient.addColorStop(1, "#ff0033");
+  
+  ctx.fillStyle = gradient;
+  ctx.shadowColor = "#00ffcc";
+  ctx.shadowBlur = 15;
   ctx.font = fontSize + "px Orbitron";
-  ctx.shadowColor = "#ff0033";
-  ctx.shadowBlur = 12;
 
   for(let i = 0; i < drops.length; i++){
     const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    const opacity = 1 - (drops[i] * fontSize) / canvas.height;
+    ctx.globalAlpha = opacity;
     ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
+    
     if(drops[i] * fontSize > canvas.height && Math.random() > 0.975){
       drops[i] = 0;
     }
-
+    
     drops[i]++;
   }
-
+  
+  ctx.globalAlpha = 1;
   ctx.shadowBlur = 0;
 }
 
-setInterval(drawMatrix, 33);
+setInterval(drawMatrix, 30);
 
-window.addEventListener("resize", ()=>{
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+window.addEventListener("resize", resizeCanvas);
+
+/* ===== ENHANCED EMAIL FUNCTION ===== */
+function sendEmail(){
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+  const statusDiv = document.getElementById("status");
+  const button = document.querySelector("button");
+
+  if(!name || !email || !message){
+    statusDiv.textContent = "⚠️ Please fill all fields";
+    statusDiv.style.color = "var(--accent-color)";
+    return;
+  }
+
+  // Show loading state
+  button.textContent = "Sending...";
+  button.disabled = true;
+  statusDiv.textContent = "🔒 Encrypting message...";
+  statusDiv.style.color = "var(--primary-color)";
+
+  const templateParams = {
+    from_name: name,
+    from_email: email,
+    message: message
+  };
+
+  emailjs.send("service_zi6c4tn", "template_lws5hwr", templateParams)
+    .then(function(response) {
+      statusDiv.textContent = "✅ Message sent successfully!";
+      statusDiv.style.color = "var(--success-color)";
+      
+      // Clear form with animation
+      const form = document.querySelector('.contact-form');
+      form.style.animation = 'pulse 0.5s ease-out';
+      
+      setTimeout(() => {
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("message").value = "";
+        form.style.animation = '';
+      }, 500);
+    }, function(error) {
+      statusDiv.textContent = "❌ Failed to send. Please try again.";
+      statusDiv.style.color = "var(--accent-color)";
+    })
+    .finally(function() {
+      button.textContent = "Send Message";
+      button.disabled = false;
+    });
+}
+
+/* Add smooth scroll behavior */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
 });
+
+document.getElementById("contact-form").addEventListener("submit", sendEmail);
 </script>
 
 </body>
